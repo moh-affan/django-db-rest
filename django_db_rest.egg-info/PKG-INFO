@@ -30,6 +30,7 @@ Description: ==============
         
         4. If your model is one to many, add ``detail_model_class`` and  ``fkey_detail``. ``detail_model_class`` is your many model while ``fkey_detail`` is foreign key name of your parent model
         
+        5. Makesure that you have django and djangorestframework package installed
 Platform: UNKNOWN
 Classifier: Environment :: Web Environment
 Classifier: Framework :: Django

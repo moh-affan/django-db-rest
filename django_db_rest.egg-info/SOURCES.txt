@@ -3,6 +3,11 @@ MANIFEST.in
 README.rst
 setup.cfg
 setup.py
+django-db-rest/__init__.py
+django-db-rest/exception.py
+django-db-rest/mixins.py
+django-db-rest/pagination.py
+django-db-rest/viewsets.py
 django_db_rest.egg-info/PKG-INFO
 django_db_rest.egg-info/SOURCES.txt
 django_db_rest.egg-info/dependency_links.txt
