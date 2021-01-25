@@ -1,0 +1,47 @@
+Metadata-Version: 1.1
+Name: django-db-rest
+Version: 0.1
+Summary: A Django Model and Django Rest Framework integration library.
+Home-page: http://www.sabitz.com/
+Author: Moh. Affan
+Author-email: b4affan@gmail.com
+License: BSD-3-Clause  # Example license
+Description: ==============
+        DJANGO DB REST
+        ==============
+        
+        Django DB Rest is a library that integrate Django Rest Framework to Django Model
+        
+        Quick start
+        -----------
+        
+        1. Add "django-db-rest" to your INSTALLED_APPS setting like this::
+        
+            INSTALLED_APPS = [
+                ...
+                'django-db-rest',
+            ]
+        
+        2. Make your viewset extends from ModelViewSet imported from django-db-rest/viewsets package::
+        
+            class MyViewSet(ModelViewSet),
+        
+        3. Add ``model_class`` property to your viewsets class.
+        
+        4. If your model is one to many, add ``detail_model_class`` and  ``fkey_detail``. ``detail_model_class`` is your many model while ``fkey_detail`` is foreign key name of your parent model
+        
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 3.11.1  # Replace "X.Y" as appropriate
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
