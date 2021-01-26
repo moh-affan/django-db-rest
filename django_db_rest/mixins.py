@@ -13,7 +13,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
-from db_rest.exception import MyException
+from .exception import MyException
 
 
 class PrepareDataMixin:
@@ -203,7 +203,7 @@ class ListModelMixin:
         _filter = request.GET.get('filter', default=False)
         limit = request.GET.get('limit', default='')
         sorter = request.GET.get('sorter', default='')
-        filterer: str = request.GET.get('filterer', default='')
+        filterer = request.GET.get('filterer', default='')
         pg = request.GET.get('page', default='')
         if _filter:
             queryset = self.filter_queryset(self.get_filtered_queryset(request=request))
@@ -217,8 +217,6 @@ class ListModelMixin:
                 queryset = queryset.order_by('id')
             except FieldError:
                 print('no_id')
-            except:
-                print('no id')
         if filterer != '':
             filter_pars = {}
             for pars in filterer.strip(",").split(","):
