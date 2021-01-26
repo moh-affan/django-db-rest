@@ -204,6 +204,7 @@ class ListModelMixin:
         limit = request.GET.get('limit', default='')
         sorter = request.GET.get('sorter', default='')
         filterer = request.GET.get('filterer', default='')
+        exclude = request.GET.get('exclude', default='')
         pg = request.GET.get('page', default='')
         if _filter:
             queryset = self.filter_queryset(self.get_filtered_queryset(request=request))
@@ -226,6 +227,15 @@ class ListModelMixin:
                 else:
                     filter_pars["{}__icontains".format(kv[0])] = kv[1]
             queryset = queryset.filter(**filter_pars)
+        if exclude != '':
+            exclude_pars = {}
+            for pars in exclude.strip(",").split(","):
+                kv = pars.split(":")
+                if len(kv) == 3:
+                    exclude_pars["{}__{}".format(kv[0], kv[2])] = kv[1]
+                else:
+                    exclude_pars["{}__icontains".format(kv[0])] = kv[1]
+            queryset = queryset.exclude(**exclude_pars)
             # print(queryset.query)
         if limit != '':
             queryset = queryset[:int(limit)]
@@ -252,6 +262,7 @@ class ListSoftDeleteModelMixin:
         limit = request.GET.get('limit', default='')
         sorter = request.GET.get('sorter', default='')
         filterer = request.GET.get('filterer', default='')
+        exclude = request.GET.get('exclude', default='')
         # queryset = self.filter_queryset(self.get_filtered_queryset(request=request))
         if _filter:
             queryset = self.filter_queryset(self.get_filtered_queryset(request=request))
@@ -268,6 +279,16 @@ class ListSoftDeleteModelMixin:
                 kv = pars.split(":")
                 filter_pars["{}__icontains".format(kv[0])] = kv[1]
             queryset = queryset.filter(**filter_pars)
+        if exclude != '':
+            exclude_pars = {}
+            for pars in exclude.strip(",").split(","):
+                kv = pars.split(":")
+                if len(kv) == 3:
+                    exclude_pars["{}__{}".format(kv[0], kv[2])] = kv[1]
+                else:
+                    exclude_pars["{}__icontains".format(kv[0])] = kv[1]
+            queryset = queryset.exclude(**exclude_pars)
+        queryset = queryset.exclude(deleted_at=None)
         if pg != '':
             page = self.paginate_queryset(queryset)
             if page is not None:
