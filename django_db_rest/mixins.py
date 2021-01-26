@@ -222,6 +222,8 @@ class ListModelMixin:
             filter_pars = {}
             for pars in filterer.strip(",").split(","):
                 kv = pars.split(":")
+                if '|' in kv[1]:
+                    kv[1] = kv[1].split('|')
                 if len(kv) == 3:
                     filter_pars["{}__{}".format(kv[0], kv[2])] = kv[1]
                 else:
@@ -231,6 +233,8 @@ class ListModelMixin:
             exclude_pars = {}
             for pars in exclude.strip(",").split(","):
                 kv = pars.split(":")
+                if '|' in kv[1]:
+                    kv[1] = kv[1].split('|')
                 if len(kv) == 3:
                     exclude_pars["{}__{}".format(kv[0], kv[2])] = kv[1]
                 else:
