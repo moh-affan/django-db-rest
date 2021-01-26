@@ -1,1 +1,1 @@
-django-db-rest
+django_db_rest
