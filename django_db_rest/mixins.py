@@ -98,7 +98,7 @@ class CreateModelMixin(PrepareDataMixin):
                                 handle_detail_create(request, d, detail_model_class)
                             else:
                                 detail = self.prepare_data(request, d, detail_model_class, True)
-                                detail.save()
+                                # detail.save()
                 serializer_class = self.get_serializer_class()
                 serializer = serializer_class(obj)
                 headers = self.get_success_headers(serializer.data)

@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: django-db-rest
-Version: 0.4
+Version: 0.4.2
 Summary: A Django Model and Django Rest Framework integration library.
 Home-page: http://www.sabitz.com/
 Author: Moh. Affan
