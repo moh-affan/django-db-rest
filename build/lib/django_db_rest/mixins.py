@@ -213,11 +213,11 @@ class ListModelMixin:
         if sorter != '':
             sorter = sorter.split(",")
             queryset = queryset.order_by(*sorter)
-        else:
-            try:
-                queryset = queryset.order_by('id')
-            except FieldError:
-                print('no_id')
+        # else:
+        #     try:
+        #         queryset = queryset.order_by('id')
+        #     except FieldError:
+        #         print('no_id')
         if filterer != '':
             filter_pars = {}
             for pars in filterer.strip(",").split(","):
