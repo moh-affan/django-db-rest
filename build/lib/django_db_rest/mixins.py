@@ -21,7 +21,7 @@ class PrepareDataMixin:
         # model_class = self.get_model_class()
         if is_update:
             try:
-                modificator = model_class._meta.get_field('modificator')
+                modificator = model_class._meta.get_field('modificator_id')
             except FieldDoesNotExist:
                 modificator = None
             if modificator is not None:
@@ -29,7 +29,7 @@ class PrepareDataMixin:
                 data['updated_at'] = timezone.now()
         else:
             try:
-                creator = model_class._meta.get_field('creator')
+                creator = model_class._meta.get_field('creator_id')
             except FieldDoesNotExist:
                 creator = None
             if creator is not None:
